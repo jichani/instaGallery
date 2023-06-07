@@ -5,11 +5,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>insta gallery</title>
+    <title>instagram feed</title>
+    <style>
+        #gallery {
+            width: 90%;
+            margin: 3em auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #gallery li {
+            width: 23%;
+            list-style: none;
+            margin: 10px;
+        }
+
+        #gallery li img {
+            width: 100%;
+            height: 300px;
+
+        }
+    </style>
 </head>
 
 <body>
+    <ul id="gallery"></ul>
 
+    <script src="./instafeed.min.js"></script>
+
+    <script>
+        var feed = new Instafeed({
+            // 이미지를 추가하려는 id 값
+            target: 'gallery',
+            // HTML을 생성하는 데 사용되는 템플릿
+            template: '<li><a href="{{link}}"><img title="{{caption}}" src="{{image}}" /></a><h4>{{caption}}</h4></li>',
+            // 최대 게시물 표시 갯수(숫자 입력하기)
+            limit: 8,
+            // 디버깅 정보를 콘솔에 표시하기
+            accessToken: 'IGQVJXal8zeVV3NklmRm9waldEZA3hZAQmdxVHdBZAlM3NEFHZAzdSdENqS0NHU01pdS00bk1BazJwakNfN1FFX1ZAmcDJPQThEeWxzZAEFkRkJDN0h6SENGRHg5VWdkNHlpQUhXQWR0dk9mRHhXY1I0UGNCUAZDZD'
+        });
+        feed.run();
+    </script>
 </body>
 
 </html>
